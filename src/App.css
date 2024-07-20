@@ -2,6 +2,30 @@
   text-align: center;
 }
 
+.app {
+  text-align: center;
+  background-color: lightblue;
+  padding: 15px;
+  border-radius: 9px;
+  width: 250px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.title {
+  color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.to-do-list {
+  color: blue;
+  background-color: lightsalmon;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
