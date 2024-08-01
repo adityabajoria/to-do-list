@@ -3,27 +3,81 @@
 }
 
 .app {
-  text-align: center;
-  background-color: lightblue;
-  padding: 15px;
-  border-radius: 9px;
-  width: 250px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  text-align: left;
+  background-color: #f0f8ff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .title {
-  color: red;
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+form {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
 }
 
 .to-do-list {
-  color: blue;
-  background-color: lightsalmon;
+  margin-top: 20px;
+}
+
+.to-do-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.to-do-list li {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+.to-do-list li p {
+  font-size: 14px;
+  margin: 0 0 10px 0;
+  color: #555;
+}
+
+.delete-all-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.delete-all-button {
+  background-color: #dc3545;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 20px;
 }
 
 .App-logo {
