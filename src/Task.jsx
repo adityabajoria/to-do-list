@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 export default function Task() {
   const [task, setTask] = useState("");
@@ -7,41 +7,41 @@ export default function Task() {
   const [dueDate, setDueDate] = useState("");
   const [taskList, setTaskList] = useState([]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     if (task === "") {
       return;
-    }
-
-    if (taskList.includes(task)) {
-      alert(`This task already exists, '${task}'.`);
+    } else if (taskList.some((t) => t.task === task)) {
+      alert(`This task already exists -> '${task}' Enter a different task.`);
       return;
     }
 
     setTaskList([
-      { task, description, importanceRating, dueDate },
       ...taskList,
+      { task, description, importanceRating, dueDate },
     ]);
+
+    // Clear the input fields
     setTask("");
     setDescription("");
     setImportanceRating("");
     setDueDate("");
   };
 
-  const DeleteTask = (i) => {
+  const deleteTask = (i) => {
     setTaskList(taskList.filter((_, index) => index !== i));
   };
 
-  function DeleteAllTasks() {
+  const deleteAllTasks = () => {
     setTaskList([]);
-  }
+  };
 
   return (
-    <div className="app">
-      <h1 className="title">TO-DO-LIST</h1>
+    <div>
+      <h1>To-do List</h1>
       <form onSubmit={handleSubmit}>
         <label>
-          Enter your tasks:
+          Task:
           <input
             type="text"
             value={task}
@@ -75,30 +75,25 @@ export default function Task() {
             onChange={(e) => setDueDate(e.target.value)}
           />
         </label>
+        <br />
         <button type="submit">ADD TASK</button>
       </form>
-      <div className="to-do-list">
-        <ul>
-          {taskList.map((taskItem, i) => (
-            <li key={i}>
-              <strong>Task</strong>
-              <p>{taskItem.task}</p>
-              <strong>Description:</strong>
-              <p>{taskItem.description}</p>
-              <strong>Importance Rating:</strong>
-              <p>{taskItem.importanceRating}</p>
-              <strong>Due Date:</strong>
-              <p>{taskItem.dueDate}</p>
-              <button onClick={() => DeleteTask(i)}> delete </button>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="delete-all-container">
-        <button onClick={DeleteAllTasks} className="delete-all-button">
-          DELTE ALL TASKS
-        </button>
-      </div>
+      <ul>
+        {taskList.map((taskItem, i) => (
+          <li key={i}>
+            <b>Task</b> {taskItem.task}
+            <br />
+            <strong>Description:</strong> {taskItem.description}
+            <br />
+            <strong>Importance Rating:</strong> {taskItem.importanceRating}
+            <br />
+            <strong>Due Date:</strong> {taskItem.dueDate}
+            <br />
+            <button onClick={() => deleteTask(i)}> X </button>
+          </li>
+        ))}
+      </ul>
+      <button onClick={deleteAllTasks}>Delete ALL TASKS</button>
     </div>
   );
 }
